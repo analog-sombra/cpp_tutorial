@@ -42,8 +42,10 @@ namespace MyNamespace {
     }
 }
 
+using namespace MyNamespace; // Using directive to bring all names from MyNamespace into the global scope
 int main() {
     // Calling the function from MyNamespace
-    MyNamespace::displayMessage();
+    // MyNamespace::displayMessage(); - Without using directive
+    displayMessage(); // With using directive
     return 0;
 }
