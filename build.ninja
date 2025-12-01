@@ -1,0 +1,29 @@
+# Ninja build file for C++ compilation
+# Just change the 'path' and 'filename' variables below to build different projects
+
+# Variables - CHANGE THESE FOR YOUR PROJECT
+cxx = C:/tools/mingw64/bin/g++.exe
+cxxflags = -Wall -Wextra -std=c++17
+path = 2_vector
+filename = vector_operations
+delete_after = true
+
+# Build rule
+rule compile
+  command = $cxx $cxxflags "$path/$filename.cpp" -o "$path/$filename.exe"
+  description = Compiling $path/$filename.cpp
+
+# Run rule (with conditional delete)
+rule run
+  command = cmd /c "cd /d "$path" && echo. && $filename.exe && if "$delete_after"=="true" del $filename.exe"
+  description = Running $filename.exe
+  pool = console
+
+# Build target
+build compile: compile
+
+# Run the executable (depends on compile)
+build run: run | compile
+
+# Default target - build and run
+default run
