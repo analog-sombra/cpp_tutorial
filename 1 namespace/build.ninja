@@ -16,10 +16,10 @@ rule run
   pool = console
 
 # Link/compile rule (for single file projects)
-build namespace.exe: compile namespace.cpp
+build namespace2.exe: compile namespace2.cpp
 
 # Run the executable
-build run: run namespace.exe
+build run: run namespace2.exe
 
 # Default target - build and run
 default run
